@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استوديو الأفلام وتعديل الصور الذكي - AI Epic Studio Pro</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 1.3rem;
+            color: #818cf8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+            flex: 1;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 992px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .card h2 {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        textarea, select, input {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-color);
+            padding: 0.75rem;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+        }
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 1px dashed var(--accent-color);
+            cursor: pointer;
+        }
+        input[type="range"] {
+            accent-color: var(--accent-color);
+            cursor: pointer;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        textarea:focus, select:focus, input:focus {
+            border-color: var(--accent-color);
+        }
+        
+        .ratio-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        .ratio-btn {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .ratio-btn.active {
+            background-color: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        button.main-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+        button.main-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        button.main-btn:disabled {
+            background-color: var(--border-color);
+            cursor: not-allowed;
+        }
+
+        button.download-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            width: 100%;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .media-box-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            min-height: 380px;
+        }
+        .media-container {
+            background-color: var(--bg-color);
+            border: 2px dashed var(--border-color);
+            border-radius: 0.5rem;
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ratio-landscape {
+            aspect-ratio: 16 / 9;
+            max-width: 100%;
+        }
+        .ratio-portrait {
+            aspect-ratio: 9 / 16;
+            max-width: 250px;
+        }
+
+        .loading-box {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 85%;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--accent-color);
+            transition: width 0.1s linear;
+        }
+        
+        .output-text-log {
+            display: none;
+            text-align: right;
+            font-family: monospace;
+            color: #38bdf8;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 0.5rem;
+        }
+
+        video, img#previewImage {
+            display: none;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem;
+            object-fit: contain;
+        }
+
+        .image-editor-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .image-editor-section h2 {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .canvas-preview-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            border: 2px dashed var(--border-color);
+            border-radius: 0.5rem;
+            min-height: 250px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        canvas {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 0.4rem;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+        .history-item {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.4rem;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .history-item span {
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 70%;
+        }
+        .history-item button {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            background-color: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>استوديو الأفلام وتعديل الصور الذكي 🎬🎨</h1>
+        <span class="status-badge">● صفحتك الشخصية مفعلة</span>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <div>
+                <div class="card">
+                    <h2>إعدادات القصة والمشهد</h2>
+                    <div class="form-group">
+                        <label for="prompt">وصف المشهد أو فكرة الفيلم (Prompt)</label>
+                        <textarea id="prompt" placeholder="اكتب وصفاً تفصيلياً للمشهد أو القصة..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">مدة العمل المستهدفة:</label>
+                        <select id="duration">
+                            <option value="short">قصير (5 دقائق)</option>
+                            <option value="medium">متوسط (ساعة واحدة)</option>
+                            <option value="epic">فيلم ملحمي طويل (حتى 4 ساعات)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="aiMode">وضع تشغيل أدوات الذكاء الاصطناعي:</label>
+                        <select id="aiMode">
+                            <option value="all_combined">🔥 دمج ومشاركة جميع الأدوات معاً (Multi-AI)</option>
+                            <option value="nano">بنانا للذكاء الاصطناعي (Nano Banana)</option>
+                            <option value="runway">Runway Gen-2</option>
+                            <option value="luma">Luma Dream Machine</option>
+                            <option value="openai">OpenAI Sora / GPT</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>الموسوعة، والأصوات</h2>
+                    <div class="form-group">
+                        <label for="cartoonEncyclopedia">موسوعة الكرتون وأغاني الأطفال:</label>
+                        <select id="cartoonEncyclopedia">
+                            <option value="none">بدون (استخدام فكرة مخصصة)</option>
+                            <option value="disney_classic">ديزني الكلاسيكي (2D خيالي)</option>
+                            <option value="pixar_3d">بيكسار الحديث (3D فائق النعومة)</option>
+                            <option value="anime_kids">أنمي أطفال لطيف (Chibi & Kawaii)</option>
+                            <option value="nursery_rhymes">أغاني أطفال تعليمية ومبهجة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="voiceType">أصوات الشخصيات والموسيقى:</label>
+                        <select id="voiceType">
+                            <option value="cute_cartoon">أصوات كرتونية طفولية مرحة مع أغاني</option>
+                            <option value="cinematic_narrator">راوي قصة سينمائي عميق + أوركسترا ضخمة</option>
+                            <option value="musical_chorus">كورال أطفال غنائي متناغم</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>أبعاد الفيديو (Aspect Ratio)</label>
+                        <div class="ratio-options">
+                            <div class="ratio-btn active" id="ratioLandscape" onclick="setRatio('landscape')">عرضي (16:9) 🖥️</div>
+                            <div class="ratio-btn" id="ratioPortrait" onclick="setRatio('portrait')">طولي (9:16) 📱</div>
+                        </div>
+                    </div>
+                    <button type="button" class="main-btn" id="generateBtn" onclick="startGeneration()">توليد وإنتاج العمل الشامل ✨</button>
+                </div>
+
+                <div class="card">
+                    <h2>سجل المشاريع المحفوظة (History)</h2>
+                    <div class="history-list" id="historyList">
+                        <span style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">لا توجد مشاريع محفوظة حتى الآن.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card" style="height: 100%;">
+                    <h2>سجل الإنتاج والمعاينة الذكية</h2>
+                    <div class="media-box-wrapper">
+                        <div class="media-container ratio-landscape" id="videoContainer">
+                            <div id="statusDefault">
+                                <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-color);">جاهز للتوليد الشامل</p>
+                                <p style="font-size: 0.85rem;">أدخل الوصف واضغط على زر التوليد لبدء صناعة الفيلم.</p>
+                            </div>
+                            <div class="loading-box" id="statusLoading">
+                                <p style="font-size: 0.9rem; color: var(--text-color);">جاري معالجة وتوليد المشاهد عبر الذكاء الاصطناعي...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <span id="progressText" style="font-size: 0.8rem;">0%</span>
+                            </div>
+                            <div id="outputLog" class="output-text-log"></div>
+                            <video id="outputVideo" controls loop playsinline>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+                                متصفحك لا يدعم تشغيل الفيديو.
+                            </video>
+                        </div>
+                        <button type="button" class="download-btn" id="downloadBtn" onclick="downloadVideo()">📥 حفظ وتحميل الفيديو على الجهاـز</button>
+                    </div>
+                </div>
+
+                <div class="image-editor-section">
+                    <h2>🎨 أداة معالجة وتعديل الصور (AI Image Editor)</h2>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="imageUpload">اختر أو ارفع صورة لتعديلها:</label>
+                        <input type="file" id="imageUpload" accept="image/*" onchange="loadImageToEditor(event)">
+                    </div>
+                    
+                    <div class="canvas-preview-wrapper">
+                        <span id="canvasPlaceholder" style="font-size: 0.85rem; color: var(--text-muted);">لم يتم رفع صورة بعد. ارفع صورة لتظهر هنا وتتمكن من تعديلها.</span>
+                        <canvas id="imageCanvas"></canvas>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label for="filterSelect">النمط / الفلتر السينمائي:</label>
+                        <select id="filterSelect" onchange="applyImageFilters()">
+                            <option value="none">عادي (بدون فلاتر)</option>
+                            <option value="grayscale">أبيض وأسود كلاسيكي</option>
+                            <option value="sepia">عتيق / سيبيا (Vintage)</option>
+                            <option value="invert">ألوان معكوسة (Cyberpunk)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label>السطوع (<span id="brightnessVal">100</span>%):</label>
+                        <input type="range" id="brightnessRange" min="0" max="200" value="100" oninput="applyImageFilters()">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label>التباين (<span id="contrastVal">100</span>%):</label>
+                        <input type="range" id="contrastRange" min="0" max="200" value="100" oninput="applyImageFilters()">
+                    </div>
+
+                    <button type="button" class="main-btn" id="downloadImgBtn" onclick="downloadEditedImage()" style="display: none; background-color: var(--success-color);">📥 حفظ وتحميل الصورة المعدلة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 استوديو الأفلام الذكي AI Epic Film Studio. جميع الحقوق محفوظة.
+    </footer>
+
+    <script>
+        let currentRatio = 'landscape';
+        let originalImage = null;
+        let canvas = document.getElementById('imageCanvas');
+        let ctx = canvas.getContext('2d');
+
+        function setRatio(ratio) {
+            currentRatio = ratio;
+            const container = document.getElementById('videoContainer');
+            const btnLandscape = document.getElementById('ratioLandscape');
+            const btnPortrait = document.getElementById('ratioPortrait');
+            if (ratio === 'landscape') {
+                container.classList.remove('ratio-portrait');
+                container.classList.add('ratio-landscape');
+                btnLandscape.classList.add('active');
+                btnPortrait.classList.remove('active');
+            } else {
+                container.classList.remove('ratio-landscape');
+                container.classList.add('ratio-portrait');
+                btnPortrait.classList.add('active');
+                btnLandscape.classList.remove('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateHistoryUI);
+
+        function startGeneration() {
+            const promptInput = document.getElementById('prompt').value.trim();
+            if (promptInput === "") {
+                alert("الرجاء كتابة وصف المشهد أو فكرة الفيلم أولاً!");
+                return;
+            }
+
+            const duration = document.getElementById('duration').value;
+            const mode = document.getElementById('aiMode').value;
+            const encyclopedia = document.getElementById('cartoonEncyclopedia').value;
+            const voice = document.getElementById('voiceType').value;
+
+            const generateBtn = document.getElementById('generateBtn');
+            const statusDefault = document.getElementById('statusDefault');
+            const statusLoading = document.getElementById('statusLoading');
+            const outputLog = document.getElementById('outputLog');
+            const outputVideo = document.getElementById('outputVideo');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const videoContainer = document.getElementById('videoContainer');
+
+            saveProjectToHistory(promptInput);
+
+            generateBtn.disabled = true;
+            statusDefault.style.display = 'none';
+            outputVideo.style.display = 'none';
+            outputLog.style.display = 'none';
+            downloadBtn.style.display = 'none';
+            statusLoading.style.display = 'flex';
+            videoContainer.style.borderStyle = 'solid';
+
+            let progress = 0;
+            progressFill.style.width = '0%';
+            progressText.innerText = '0%';
+
+            const interval = setInterval(() => {
+                progress += 2;
+                progressFill.style.width = progress + '%';
+                progressText.innerText = progress + '%';
+
+                if (progress === 30) {
+                    statusLoading.style.display = 'none';
+                    outputLog.style.display = 'block';
+                    outputLog.innerHTML = `[1/4] تحليل الوصف وإعداد الأصول...\n`;
+                } else if (progress === 60) {
+                    outputLog.innerHTML += `[2/4] تفعيل نمط [ ${mode.toUpperCase()} ] وموسوعة [ ${encyclopedia.toUpperCase()} ]...\n`;
+                } else if (progress === 85) {
+                    outputLog.innerHTML += `[3/4] دمج أصوات الشخصيات، المؤثرات، وأغاني الأطفال (${voice})...\n`;
+                    outputLog.innerHTML += `[4/4] تجميع العمل بمدة (${duration === 'epic' ? '4 ساعات متواصلة' : 'المدة المحددة'})...\n`;
+                }
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    statusLoading.style.display = 'none';
+                    outputLog.style.display = 'none';
+                    outputVideo.style.display = 'block';
+                    downloadBtn.style.display = 'block';
+                    generateBtn.disabled = false;
+                    outputVideo.play().catch(error => {
+                        console.log("تم حظر التشغيل التلقائي من المتصفح.");
+                    });
+                }
+            }, 50);
+        }
+
+        function saveProjectToHistory(title) {
+            let history = JSON.parse(localStorage.getItem('ai_film_history')) || [];
+            history.unshift({ id: Date.now(), title: title, date: new Date().toLocaleDateString('ar-SA') });
+            if (history.length > 10) history.pop();
+            localStorage.setItem('ai_film_history', JSON.stringify(history));
+            updateHistoryUI();
+        }
+
+        function updateHistoryUI() {
+            const historyList = document.getElementById('historyList');
+            let history = JSON.parse(localStorage.getItem('ai_film_history')) || [];
+            
+            if (history.length === 0) {
+                historyList.innerHTML = `<span style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">لا توجد مشاريع محفوظة حتى الآن.</span>`;
+                return;
+            }
+
+            historyList.innerHTML = '';
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.innerHTML = `
+                    <span title="${item.title}">${item.title}</span>
+                    <button onclick="deleteHistoryItem(${item.id})">حذف</button>
+                `;
+                historyList.appendChild(div);
+            });
+        }
+
+        function deleteHistoryItem(id) {
+            let history = JSON.parse(localStorage.getItem('ai_film_history')) || [];
+            history = history.filter(item => item.id !== id);
+            localStorage.setItem('ai_film_history', JSON.stringify(history));
+            updateHistoryUI();
+        }
+
+        function downloadVideo() {
+            const videoSource = document.querySelector('#outputVideo source').src;
+            const a = document.createElement('a');
+            a.href = videoSource;
+            a.download = 'AI_Epic_Film.mp4';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function loadImageToEditor(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                originalImage = new Image();
+                originalImage.onload = function() {
+                    canvas.width = originalImage.width;
+                    canvas.height = originalImage.height;
+                    ctx.drawImage(originalImage, 0, 0);
+                    
+                    document.getElementById('canvasPlaceholder').style.display = 'none';
+                    canvas.style.display = 'block';
+                    document.getElementById('downloadImgBtn').style.display = 'block';
+                    
+                    document.getElementById('brightnessRange').value = 100;
+                    document.getElementById('contrastRange').value = 100;
+                    document.getElementById('filterSelect').value = 'none';
+                    applyImageFilters();
+                }
+                originalImage.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function applyImageFilters() {
+            if (!originalImage) return;
+
+            const brightness = document.getElementById('brightnessRange').value;
+            const contrast = document.getElementById('contrastRange').value;
+            const filter = document.getElementById('filterSelect').value;
+
+            document.getElementById('brightnessVal').innerText = brightness;
+            document.getElementById('contrastVal').innerText = contrast;
+
+            canvas.width = originalImage.width;
+            canvas.height = originalImage.height;
+
+            ctx.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
+            
+            if (filter === 'grayscale') {
+                ctx.filter += ' grayscale(100%)';
+            } else if (filter === 'sepia') {
+                ctx.filter += ' sepia(100%)';
+            } else if (filter === 'invert') {
+                ctx.filter += ' invert(100%)';
+            }
+
+            ctx.drawImage(originalImage, 0, 0);
+        }
+
+        function downloadEditedImage() {
+            if (!originalImage) return;
+            const link = document.createElement('a');
+            link.download = 'AI_Edited_Image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
