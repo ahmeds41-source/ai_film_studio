@@ -154,18 +154,6 @@ input {
   min-height: 40px;
 }
 
-input[type=file] {
-  padding: 0.5rem;
-  border: 1px dashed var(--accent);
-  cursor: pointer;
-}
-
-input[type=range] {
-  accent-color: var(--accent);
-  cursor: pointer;
-  min-height: 32px;
-}
-
 textarea {
   resize: vertical;
   min-height: 80px;
@@ -175,30 +163,6 @@ textarea:focus,
 select:focus,
 input:focus {
   border-color: var(--accent);
-}
-
-.ratio {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.ratio-btn {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-  min-height: 44px;
-}
-
-.ratio-btn.active {
-  background: rgba(99, 102, 241, 0.15);
-  border-color: var(--accent);
-  color: var(--text);
 }
 
 .main-btn {
@@ -249,7 +213,6 @@ input:focus {
   border-radius: 0.5rem;
   width: 100%;
   min-height: 340px;
-  max-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,16 +221,6 @@ input:focus {
   padding: 1rem;
   position: relative;
   overflow: hidden;
-}
-
-.ratio-land {
-  aspect-ratio: 16 / 9;
-}
-
-.ratio-port {
-  aspect-ratio: 9 / 16;
-  max-width: 250px;
-  margin: 0 auto;
 }
 
 .load-box {
@@ -305,7 +258,7 @@ input:focus {
   font-size: 0.8rem;
   white-space: pre-wrap;
   width: 100%;
-  max-height: 140px;
+  max-height: 100px;
   overflow-y: auto;
   padding: 0.5rem;
   background: rgba(15, 23, 42, 0.9);
@@ -316,55 +269,6 @@ input:focus {
   display: block;
 }
 
-.timer {
-  font-size: 0.8rem;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid var(--border);
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.4rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.phase {
-  font-size: 0.85rem;
-  color: #38bdf8;
-  font-weight: bold;
-}
-
-.stat {
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.3rem 0.6rem;
-  border-radius: 0.3rem;
-  display: inline-block;
-}
-
-.stat.sending {
-  color: var(--accent);
-  background: rgba(99, 102, 241, 0.15);
-}
-
-.stat.processing {
-  color: var(--warn);
-  background: rgba(245, 158, 11, 0.15);
-}
-
-.stat.done {
-  color: var(--ok);
-  background: rgba(34, 197, 94, 0.15);
-}
-
-.stat.failed {
-  color: var(--err);
-  background: rgba(239, 68, 68, 0.15);
-}
-
-video,
 img#previewImage {
   display: none;
   width: 100%;
@@ -374,320 +278,8 @@ img#previewImage {
   object-fit: contain;
 }
 
-video.active,
 img#previewImage.active {
   display: block;
-}
-
-.img-editor,
-.storyboard,
-.voices,
-.gallery,
-.chars,
-.timeline,
-.vid-editor,
-.cloud {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.img-editor h2,
-.storyboard h2,
-.voices h2,
-.gallery h2,
-.chars h2,
-.timeline h2,
-.vid-editor h2,
-.cloud h2 {
-  font-size: 1.15rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.canvas-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg);
-  border: 2px dashed var(--border);
-  border-radius: 0.5rem;
-  min-height: 250px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-canvas {
-  max-width: 100%;
-  max-height: 320px;
-  border-radius: 0.4rem;
-}
-
-.compare-wrap {
-  position: relative;
-  display: none;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.compare-wrap.active {
-  display: block;
-}
-
-.compare-wrap canvas {
-  display: block;
-  max-width: 100%;
-  max-height: 400px;
-  margin: 0 auto;
-}
-
-.compare-ov {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 50%;
-  overflow: hidden;
-  border-left: 2px solid var(--accent);
-}
-
-.compare-ov canvas {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-#compareSlider {
-  width: 100%;
-  margin: 0.5rem 0;
-  display: none;
-}
-
-#compareSlider.active {
-  display: block;
-}
-
-.ed-tools {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 600px) {
-  .ed-tools {
-    grid-template-columns: 1fr;
-  }
-}
-
-.ed-btns {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.ed-btns button {
-  flex: 1;
-  min-width: 100px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s;
-  min-height: 40px;
-}
-
-.ed-btns button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.presets {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.75rem;
-}
-
-.preset {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 0.4rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.preset:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.dl-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.5rem;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
-.dl-row select {
-  width: auto;
-  padding: 0.5rem;
-  font-size: 0.85rem;
-}
-
-@media (max-width: 600px) {
-  .dl-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.gal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.75rem;
-}
-
-.gal-item {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.2s;
-}
-
-.gal-item:hover {
-  border-color: var(--accent);
-}
-
-.gal-item .thumb {
-  width: 100%;
-  height: 90px;
-  object-fit: cover;
-  background: #334155;
-  cursor: pointer;
-}
-
-.gal-item .info {
-  padding: 0.4rem;
-  font-size: 0.7rem;
-  color: var(--muted);
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.gal-item .info strong {
-  color: var(--text);
-  font-size: 0.75rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.gal-actions {
-  display: flex;
-  gap: 0.2rem;
-  padding: 0.3rem;
-}
-
-.gal-actions button {
-  flex: 1;
-  border: none;
-  padding: 0.35rem;
-  border-radius: 0.3rem;
-  font-size: 0.65rem;
-  cursor: pointer;
-  color: #fff;
-  background: var(--accent);
-  min-height: 28px;
-}
-
-.gal-actions button.del {
-  background: var(--err);
-}
-
-.hist-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-.hist-item {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.4rem;
-  font-size: 0.85rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.hist-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  flex: 1;
-  min-width: 0;
-}
-
-.hist-info strong {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--text);
-  font-size: 0.85rem;
-}
-
-.hist-info small {
-  color: var(--muted);
-  font-size: 0.75rem;
-}
-
-.hist-actions {
-  display: flex;
-  gap: 0.3rem;
-}
-
-.hist-actions button {
-  border: none;
-  padding: 0.35rem 0.5rem;
-  border-radius: 0.3rem;
-  font-size: 0.75rem;
-  cursor: pointer;
-  color: #fff;
-  min-height: 30px;
-}
-
-.hist-actions .load {
-  background: var(--accent);
-}
-
-.hist-actions .del {
-  background: var(--err);
 }
 
 .badge {
@@ -699,9 +291,18 @@ canvas {
   color: var(--ok);
 }
 
-.badge.offline {
-  background: rgba(239, 68, 68, 0.2);
-  color: var(--err);
+.api-status {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.4rem;
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--ok);
+  display: inline-block;
+}
+
+.api-status.mock {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warn);
 }
 
 footer {
@@ -721,7 +322,6 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: calc(100vw - 2rem);
 }
 
 .toast {
@@ -730,457 +330,12 @@ footer {
   color: #fff;
   font-size: 0.9rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease-out;
-  min-width: 200px;
-  max-width: 320px;
 }
 
 .toast.success { background: var(--ok); }
 .toast.error { background: var(--err); }
 .toast.info { background: var(--accent); }
 .toast.warning { background: var(--warn); }
-
-@keyframes slideIn {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideOut {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(-100%); opacity: 0; }
-}
-
-.tpl-row {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.tpl-chip {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 0.4rem 0.7rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  min-height: 36px;
-}
-
-.tpl-chip:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.empty {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.85rem;
-  padding: 1rem;
-}
-
-.scenes {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.scene {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.6rem;
-  padding: 0.75rem;
-  display: grid;
-  grid-template-columns: 1fr 110px 36px;
-  gap: 0.5rem;
-  align-items: start;
-}
-
-@media (max-width: 600px) {
-  .scene { grid-template-columns: 1fr; }
-}
-
-.scene .num {
-  font-size: 0.75rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.scene textarea {
-  min-height: 55px;
-  font-size: 0.85rem;
-  padding: 0.5rem;
-}
-
-.scene .dur {
-  font-size: 0.8rem;
-  padding: 0.5rem;
-}
-
-.scene .del {
-  background: var(--err);
-  border: none;
-  color: #fff;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  height: 100%;
-  font-size: 1rem;
-  min-height: 36px;
-}
-
-.sb-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.sb-actions button {
-  flex: 1;
-  min-width: 120px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s;
-  min-height: 40px;
-}
-
-.sb-actions button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.voices-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.6rem;
-  max-height: 380px;
-  overflow-y: auto;
-}
-
-@media (min-width: 600px) {
-  .voices-grid { grid-template-columns: 1fr 1fr; }
-}
-
-.voice {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.6rem;
-  padding: 0.7rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.voice:hover { border-color: var(--accent); }
-.voice.sel {
-  border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.12);
-}
-
-.voice .vic { font-size: 1.5rem; flex-shrink: 0; }
-.voice .vinfo { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-.voice .vinfo strong { font-size: 0.85rem; color: var(--text); }
-.voice .vinfo small { font-size: 0.72rem; color: var(--muted); }
-
-.voice .pvbtn {
-  background: var(--accent);
-  border: none;
-  color: #fff;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.voice .pvbtn.playing { background: var(--err); }
-
-.api-status {
-  font-size: 0.8rem;
-  padding: 0.4rem 0.75rem;
-  border-radius: 0.4rem;
-  background: rgba(34, 197, 94, 0.15);
-  color: var(--ok);
-  display: inline-block;
-}
-
-.api-status.mock {
-  background: rgba(245, 158, 11, 0.15);
-  color: var(--warn);
-}
-
-.rating {
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid var(--border);
-  border-radius: 0.4rem;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.rating.active { display: flex; }
-.rating .star {
-  font-size: 1.6rem;
-  cursor: pointer;
-  color: var(--border);
-  transition: color 0.2s;
-  min-width: 32px;
-  text-align: center;
-}
-.rating .star.active { color: var(--warn); }
-.rating span.lbl { font-size: 0.85rem; color: var(--muted); }
-
-.audit-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  max-height: 200px;
-  overflow-y: auto;
-  font-size: 0.75rem;
-}
-
-.audit-item {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 0.35rem 0.6rem;
-  border-radius: 0.3rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.audit-item .ok { color: var(--ok); }
-.audit-item .er { color: var(--err); }
-.audit-item .cn { color: var(--warn); }
-
-.music-row {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.music-chip {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 0.4rem 0.7rem;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  min-height: 36px;
-}
-
-.music-chip:hover { border-color: var(--accent); color: var(--accent); }
-.music-chip.active {
-  border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--text);
-}
-
-.modal-ov {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10000;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-.modal-ov.active { display: flex; }
-
-.modal-box {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  max-width: 600px;
-  width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
-}
-.modal-box h3 { margin-bottom: 1rem; color: var(--accent); }
-
-.char-item {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 0.6rem;
-  border-radius: 0.4rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.tl-track {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.5rem 0;
-  min-height: 100px;
-}
-
-.tl-clip {
-  background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  min-width: 120px;
-  font-size: 0.75rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-shrink: 0;
-}
-.tl-clip:hover { opacity: 0.85; }
-.tl-clip strong { font-size: 0.8rem; }
-
-.drop-zone {
-  border: 2px dashed var(--accent);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  background: rgba(99, 102, 241, 0.05);
-  transition: all 0.2s;
-  cursor: pointer;
-}
-.drop-zone.dragover {
-  background: rgba(99, 102, 241, 0.2);
-  border-color: var(--accent-h);
-  color: var(--text);
-  transform: scale(1.01);
-}
-
-.vid-clips {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.vid-clip {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.6rem;
-  padding: 0.6rem;
-  display: grid;
-  grid-template-columns: 100px 1fr auto;
-  gap: 0.6rem;
-  align-items: center;
-}
-
-.vid-clip video {
-  width: 100px;
-  height: 60px;
-  border-radius: 0.3rem;
-  object-fit: cover;
-  background: #000;
-}
-
-.vid-clip .cinfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-size: 0.8rem;
-  min-width: 0;
-}
-.vid-clip .cinfo strong { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.vid-clip .cinfo small { color: var(--muted); font-size: 0.72rem; }
-
-.clip-act {
-  display: flex;
-  gap: 0.3rem;
-  flex-wrap: wrap;
-  margin-top: 0.3rem;
-}
-.clip-act button {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  font-size: 0.75rem;
-  min-height: 28px;
-}
-.clip-act button:hover { border-color: var(--accent); }
-.clip-act button.del { color: var(--err); border-color: var(--err); }
-
-.clip-trim {
-  display: none;
-  gap: 0.4rem;
-  margin-top: 0.4rem;
-  padding: 0.4rem;
-  background: rgba(99, 102, 241, 0.08);
-  border-radius: 0.3rem;
-  font-size: 0.75rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.clip-trim.active { display: flex; }
-.clip-trim input[type=number] { width: 70px; padding: 0.3rem; font-size: 0.75rem; min-height: 28px; }
-
-.vt-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-@media (max-width: 600px) { .vt-grid { grid-template-columns: 1fr; } }
-
-.va-btns {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.ff-prog {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.ff-res {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(34, 197, 94, 0.05);
-  border: 1px solid var(--ok);
-  border-radius: 0.5rem;
-}
 </style>
 </head>
 <body>
@@ -1188,10 +343,8 @@ footer {
 <header>
 <h1>🎬 AI Epic Studio Pro</h1>
 <div class="h-actions">
-<button class="icb" onclick="shareProjectLink()">🔗 مشاركة</button>
-<button class="icb" id="notifBtn" onclick="requestNotifications()">🔔 إشعارات</button>
 <span class="badge" id="connBadge">● متصل</span>
-<button class="icb" id="themeToggle" aria-label="تبديل الثيم">🌗</button>
+<button class="icb" id="themeToggle" onclick="toggleTheme()">🌗</button>
 </div>
 </header>
 
@@ -1199,779 +352,197 @@ footer {
 <div class="grid">
 <div>
 <div class="card">
-<h2>إعدادات القصة</h2>
-<div class="fg"><label>قوالب سريعة</label>
-<div class="tpl-row" id="tplRow">
-<button class="tpl-chip" data-tpl="kids">🧒 أطفال</button>
-<button class="tpl-chip" data-tpl="ad">📢 إعلان</button>
-<button class="tpl-chip" data-tpl="edu">📚 تعليمي</button>
-<button class="tpl-chip" data-tpl="social">📱 سوشيال</button>
-</div>
-<div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">
-<button class="icb" onclick="saveUserTemplate()" style="font-size:.75rem">💾 حفظ القالب</button>
-<button class="icb" onclick="openTemplatesModal()" style="font-size:.75rem">📁 قوالبي</button>
-</div>
-</div>
-<div class="fg"><label for="prompt">وصف المشهد</label>
-<textarea id="prompt" placeholder="اكتب وصفاً تفصيلياً بالإنجليزية للحصول على أفضل نتيجة من Hugging Face..."></textarea></div>
-<div class="fg"><label for="customDuration">وقت الفيديو:</label>
-<input type="text" id="customDuration" value="15 دقيقة"></div>
-<div class="fg"><label for="aiMode">وضع التشغيل:</label>
-<select id="aiMode">
-<option value="all_combined">🔥 دمج الأدوات</option>
-<option value="nano">Nano Banana</option>
-<option value="runway">Runway Gen-2</option>
-<option value="luma">Luma Dream Machine</option>
-<option value="openai">OpenAI Sora</option>
-</select></div>
-</div>
-
-<div class="card">
-<h2>الموسوعة والأصوات</h2>
-<div class="fg"><label for="cartoonEncyclopedia">موسوعة الكرتون:</label>
-<select id="cartoonEncyclopedia">
-<option value="none">بدون</option>
-<option value="disney_classic">ديزني الكلاسيكي</option>
-<option value="pixar_3d">بيكسار الحديث</option>
-<option value="anime_kids">أنمي أطفال</option>
-<option value="nursery_rhymes">أغاني أطفال</option>
-</select></div>
-<div class="fg"><label for="voiceType">الصوت:</label>
-<select id="voiceType"></select></div>
-<div class="fg"><label>موسيقى خلفية</label>
-<div class="music-row" id="musicRow"></div>
-<input type="range" id="musicVolume" min="0" max="100" value="40">
-<small style="color:var(--muted);font-size:.75rem">مستوى: <span id="musicVolVal">40%</span></small></div>
-<div class="fg"><label>أبعاد الفيديو</label>
-<div class="ratio">
-<button class="ratio-btn active" id="ratioLand" onclick="setRatio('landscape')">عرضي 16:9</button>
-<button class="ratio-btn" id="ratioPort" onclick="setRatio('portrait')">طولي 9:16</button>
-</div></div>
-<div class="fg" style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
-<div><label for="videoQuality">الجودة:</label>
-<select id="videoQuality"><option value="720p">720p</option><option value="1080p" selected>1080p</option><option value="4k">4K</option></select></div>
-<div><label for="fpsSelect">الإطارات:</label>
-<select id="fpsSelect"><option value="30" selected>30 FPS</option><option value="60">60 FPS</option></select></div>
-</div>
+<h2>إعدادات التوليد</h2>
+<div class="fg"><label for="prompt">وصف المشهد (Prompt)</label>
+<textarea id="prompt" placeholder="اكتب وصفاً تفصيلياً بالإنجليزية للحصول على أفضل نتيجة..."></textarea></div>
 <button class="main-btn" id="generateBtn" onclick="startGeneration()">توليد وإنتاج ✨</button>
-<button class="icb" id="stopBtn" style="display:none" onclick="stopGeneration()">⛔ إيقاف</button>
+<button class="icb" id="stopBtn" style="display:none;background:var(--err);color:#fff;" onclick="stopGeneration()">⛔ إيقاف</button>
 </div>
 
 <div class="card">
-<h2>سجل المشاريع</h2>
-<div class="hist-list" id="histList"><div class="empty">لا توجد مشاريع.</div></div>
-<div style="display:flex;gap:.5rem;margin-top:.5rem">
-<button class="icb" style="flex:1" onclick="exportProjects()">📤 تصدير</button>
-<button class="icb" style="flex:1" onclick="document.getElementById('importFile').click()">📥 استيراد</button>
-<input type="file" id="importFile" accept="application/json" style="display:none" onchange="importProjects(event)">
+<h2>إعدادات API (Hugging Face) 🔌</h2>
+<div style="font-size:.75rem;color:var(--warn);background:rgba(245,158,11,.1);padding:.5rem;border-radius:.4rem;margin-bottom:.5rem">
+ضع مفتاح Hugging Face Access Token الخاص بك هنا لتوليد صور حقيقية، أو اتركه فارغاً للاستجابة بوضع المحاكاة.
 </div>
-<button class="icb" style="color:var(--err);border-color:var(--err)" onclick="clearAllProjects()">🗑️ حذف الكل</button>
-</div>
-
-<div class="card">
-<h2>سجل التوليد <button class="icb" style="font-size:.7rem;padding:.2rem .5rem" onclick="clearAuditLog()">مسح</button></h2>
-<div class="audit-list" id="auditList"><div class="empty" style="font-size:.75rem">لا توجد عمليات.</div></div>
+<div class="fg"><label for="apiKey">Hugging Face Token:</label>
+<input type="password" id="apiKey" placeholder="hf_..."></div>
+<button class="icb" style="margin-top:.5rem" onclick="saveApiSettings()">💾 حفظ المفتاح</button>
+<div id="apiStatus" class="api-status mock" style="margin-top:.5rem">⚠️ وضع المحاكاة</div>
 </div>
 </div>
 
 <div>
 <div class="card">
-<h2>سجل الإنتاج</h2>
+<h2>معاينة النتيجة</h2>
 <div class="media-wrap">
-<div class="media-box" id="mediaBox" aria-live="polite">
+<div class="media-box" id="mediaBox">
 <div id="placeholder">ستظهر هنا معاينة النتيجة ✨</div>
-<video id="previewVideo" controls playsinline></video>
 <img id="previewImage" alt="معاينة">
 <div class="load-box" id="loadBox">
-<div class="timer">
-<span>⏱️ المستغرق: <strong id="elapsedTimer">00:00</strong></span>
-<span id="statusInline" class="stat sending">جارٍ الإرسال</span>
-</div>
-<div class="phase" id="phaseInd">المرحلة: تهيئة...</div>
-<div class="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progBarEl"><div class="prog-fill" id="progFill"></div></div>
-<div style="display:flex;justify-content:space-between;width:100%;font-size:.75rem;color:var(--muted)">
-<span id="progPct">—</span><span>معالجة...</span>
-</div>
-<div class="log-box" id="outLog" aria-live="polite"></div>
+<div class="phase" id="phaseInd">جارٍ المعالجة...</div>
+<div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+<div class="log-box" id="outLog"></div>
 </div>
 </div>
 </div>
-<div class="dl-row">
-<button class="dl-btn" id="dlBtn" style="display:none" onclick="downloadResult()">⬇️ تحميل</button>
-<select id="dlFormat" aria-label="صيغة التحميل">
-<option value="original">الصيغة الأصلية</option>
-<option value="png">PNG</option><option value="jpg">JPG</option><option value="webp">WEBP</option>
-</select>
-</div>
-<div class="rating" id="ratingPanel">
-<span class="lbl">قيّم:</span>
-<span class="star" data-r="1">★</span><span class="star" data-r="2">★</span><span class="star" data-r="3">★</span><span class="star" data-r="4">★</span><span class="star" data-r="5">★</span>
+<button class="dl-btn" id="dlBtn" style="display:none; margin-top:0.5rem;" onclick="downloadResult()">⬇️ تحميل النتيجة</button>
 </div>
 </div>
-
-<div class="card">
-<h2>إعدادات API الحقيقي (Hugging Face) 🔌</h2>
-<div style="font-size:.75rem;color:var(--warn);background:rgba(245,158,11,.1);padding:.5rem;border-radius:.4rem;margin-bottom:.5rem">
-ضع مفتاح Hugging Face Access Token الخاص بك هنا لتوليد صور حقيقية مجاناً عبر Stable Diffusion.
-</div>
-<div class="fg"><label for="apiKey">Hugging Face Token (hf_...):</label>
-<input type="password" id="apiKey" placeholder="hf_..."></div>
-<div style="display:flex;gap:.5rem;margin-top:.5rem">
-<button class="icb" style="flex:1" onclick="saveApiSettings()">💾 حفظ المفتاح</button>
-<button class="icb" style="flex:1" onclick="testApiConnection()">🔍 اختبار</button>
-</div>
-<div id="apiStatus" class="api-status mock">⚠️ وضع المحاكاة</div>
-</div>
-
-<div class="card cloud" style="margin-top:0">
-<h2>المزامنة السحابية ☁️ (Supabase)</h2>
-<div style="font-size:.75rem;color:var(--muted);background:rgba(99,102,241,.1);padding:.5rem;border-radius:.4rem;margin-bottom:.5rem">
-اختياري — نسخ احتياطي للمشاريع عبر Supabase.
-</div>
-<div class="fg"><label for="supabaseUrl">Supabase URL:</label>
-<input type="url" id="supabaseUrl" placeholder="https://xxx.supabase.co"></div>
-<div class="fg"><label for="supabaseKey">Anon Key (عام):</label>
-<input type="password" id="supabaseKey" placeholder="eyJ..."></div>
-<div style="display:flex;gap:.5rem;flex-wrap:wrap">
-<button class="icb" style="flex:1" onclick="saveCloudSettings()">💾 حفظ</button>
-<button class="icb" style="flex:1" onclick="syncToCloud()">☁️ رفع</button>
-<button class="icb" style="flex:1" onclick="syncFromCloud()">⬇️ استرجاع</button>
-</div>
-<div id="cloudStatus" class="api-status mock">⚠️ غير متصل</div>
-</div>
-</div>
-</div>
-
-<div class="img-editor">
-<h2>محرر الصور الذكي 🎨</h2>
-<div class="fg" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
-<label style="margin:0">رفع صورة:</label>
-<div style="display:flex;gap:.4rem">
-<button class="icb" id="undoBtn" onclick="editorUndo()" disabled>↩️</button>
-<button class="icb" id="redoBtn" onclick="editorRedo()" disabled>↪️</button>
-</div>
-</div>
-<div class="drop-zone" id="imageDropZone" style="margin-top:.5rem">
-📷 اسحب صورة هنا أو اضغط للاختيار
-<input type="file" id="imageUpload" accept="image/*" onchange="loadImageForEditor(event)" style="display:none">
-</div>
-<div class="canvas-wrap" style="margin-top:.75rem">
-<canvas id="editorCanvas" style="display:none"></canvas>
-<span id="editorPlaceholder" style="color:var(--muted);font-size:.9rem">ارفع صورة</span>
-</div>
-<div class="compare-wrap" id="compareWrapper">
-<canvas id="compareCanvasAfter"></canvas>
-<div class="compare-ov" id="compareOverlay"><canvas id="compareCanvasBefore"></canvas></div>
-</div>
-<input type="range" id="compareSlider" min="0" max="100" value="50">
-<div class="presets">
-<button class="preset" onclick="applyPreset('cinematic')">🎬 سينمائي</button>
-<button class="preset" onclick="applyPreset('vintage')">📷 قديم</button>
-<button class="preset" onclick="applyPreset('vivid')">🎨 حيوي</button>
-<button class="preset" onclick="applyPreset('bw')">⚫ أبيض وأسود</button>
-<button class="preset" onclick="applyPreset('night')">🌙 ليلي</button>
-</div>
-<div class="ed-tools">
-<div class="fg"><label>السطوع: <span id="brightnessVal">100%</span></label>
-<input type="range" id="brightness" min="0" max="200" value="100" oninput="applyEditorFilters(true)"></div>
-<div class="fg"><label>التباين: <span id="contrastVal">100%</span></label>
-<input type="range" id="contrast" min="0" max="200" value="100" oninput="applyEditorFilters(true)"></div>
-<div class="fg"><label>التشبع: <span id="saturateVal">100%</span></label>
-<input type="range" id="saturate" min="0" max="200" value="100" oninput="applyEditorFilters(true)"></div>
-<div class="fg"><label>التمويه: <span id="blurVal">0px</span></label>
-<input type="range" id="blur" min="0" max="10" value="0" oninput="applyEditorFilters(true)"></div>
-<div class="fg"><label>رمادي: <span id="grayVal">0%</span></label>
-<input type="range" id="grayscale" min="0" max="100" value="0" oninput="applyEditorFilters(true)"></div>
-<div class="fg"><label>سيبيا: <span id="sepiaVal">0%</span></label>
-<input type="range" id="sepia" min="0" max="100" value="0" oninput="applyEditorFilters(true)"></div>
-</div>
-<div class="ed-btns">
-<button onclick="rotateEditor(90)">🔄 تدوير</button>
-<button onclick="flipEditor('h')">↔️ قلب أفقي</button>
-<button onclick="flipEditor('v')">↕️ قلب عمودي</button>
-<button onclick="resetEditor()">🔃 إعادة ضبط</button>
-<button onclick="toggleCompare()" id="compareBtn">👁️ مقارنة</button>
-<button onclick="downloadEditedImage()" style="background:var(--ok);color:#fff;border-color:var(--ok)">⬇️ تحميل</button>
-</div>
-</div>
-
-<div class="storyboard">
-<h2>لوحة القصة 🎞️</h2>
-<div class="scenes" id="scenesContainer"><div class="empty" id="scenesEmpty">لا مشاهد. اضغط "إضافة" أو "توليد سيناريو".</div></div>
-<div class="sb-actions">
-<button onclick="addScene()">➕ إضافة مشهد</button>
-<button onclick="generateScript()">🤖 توليد سيناريو</button>
-<button onclick="autoSplitScenes()">✨ تقسيم</button>
-<button onclick="clearScenes()" style="color:var(--err);border-color:var(--err)">🗑️ مسح</button>
-</div>
-<div class="timer" style="margin-top:.75rem">
-<span>📊 المشاهد: <strong id="sceneCount">0</strong></span>
-<span>⏱️ المدة: <strong id="totalSceneDuration">0 ثانية</strong></span>
-</div>
-</div>
-
-<div class="chars">
-<h2>ثبات الشخصيات 👥 <button class="icb" onclick="addCharacter()" style="font-size:.75rem">➕ شخصية</button></h2>
-<p style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem">سجّل كل شخصية بوصف ثابت.</p>
-<div id="charsList"><div class="empty" style="font-size:.8rem">لا شخصيات.</div></div>
-</div>
-
-<div class="timeline">
-<h2>الخط الزمني 🎬</h2>
-<div class="tl-track" id="tlTrack"><div class="empty" style="font-size:.8rem">لا مقاطع.</div></div>
-<div class="sb-actions" style="margin-top:.5rem">
-<button onclick="exportTimelineAsJSON()">📤 تصدير JSON</button>
-<button onclick="mergeTimelineToFFmpegCommand()">🛠️ أمر FFmpeg</button>
-</div>
-</div>
-
-<div class="vid-editor">
-<h2>🎬 محرر الفيديو (FFmpeg.wasm) <span id="ffStatus" class="api-status mock" style="font-size:.75rem">⏳ جارٍ...</span></h2>
-<p style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem">ارفع مقاطع، رتّبها، قصّها، أضف موسيقى/ترجمة، ثم صدّر. المعالجة بالكامل داخل المتصفح.</p>
-<div class="drop-zone" id="videoDropZone">
-🎥 اسحب فيديوهات هنا أو اضغط للاختيار (MP4, WEBM, MOV)
-<input type="file" id="videoFilesInput" accept="video/*" multiple onchange="handleVideoFiles(event)" style="display:none">
-</div>
-<div class="vid-clips" id="vidClipsList" style="margin-top:.75rem"><div class="empty" style="font-size:.8rem">لا مقاطع.</div></div>
-<div class="vt-grid" id="vtGrid" style="display:none">
-<div class="fg"><label>الجودة CRF:</label>
-<input type="range" id="videoCRF" min="18" max="35" value="23" oninput="document.getElementById('crfVal').textContent=this.value">
-<small style="color:var(--muted)">CRF: <span id="crfVal">23</span></small></div>
-<div class="fg"><label>الصيغة:</label>
-<select id="videoOutputFormat">
-<option value="mp4">MP4</option><option value="webm">WEBM</option><option value="gif">GIF</option>
-</select></div>
-<div class="fg"><label>الدقة:</label>
-<select id="videoResolution">
-<option value="original">الأصلية</option><option value="1080">1080p</option><option value="720">720p</option><option value="480">480p</option><option value="360">360p</option>
-</select></div>
-<div class="fg"><label>السرعة:</label>
-<select id="videoSpeed">
-<option value="1">عادي</option><option value="0.5">0.5x</option><option value="1.5">1.5x</option><option value="2">2x</option>
-</select></div>
-</div>
-<div class="vt-grid" id="vtExtras" style="display:none">
-<div class="fg"><label>موسيقى (اختياري):</label>
-<input type="file" id="videoAudioInput" accept="audio/*" onchange="handleAudioFile(event)">
-<small style="color:var(--muted)" id="audioFileName">لم يُختَر</small></div>
-<div class="fg"><label>ترجمة SRT (اختياري):</label>
-<input type="file" id="videoSrtInput" accept=".srt" onchange="handleSrtFile(event)">
-<small style="color:var(--muted)" id="srtFileName">لم يُختَر</small></div>
-</div>
-<div class="va-btns" id="vaBtns" style="display:none">
-<button class="main-btn" id="processVideoBtn" onclick="processVideoWithFFmpeg()">🚀 تصدير الفيديو</button>
-<button class="icb" id="cancelVideoBtn" style="display:none" onclick="cancelFFmpegProcess()">⛔ إلغاء</button>
-</div>
-<div class="ff-prog" id="ffProgress" style="display:none">
-<div class="phase" id="ffPhase">جارٍ التهيئة...</div>
-<div class="prog-bar"><div class="prog-fill" id="ffProgFill"></div></div>
-<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)">
-<span id="ffPct">0%</span><span id="ffTime">00:00</span>
-</div>
-<div class="log-box" id="ffLog" style="max-height:120px"></div>
-</div>
-<div class="ff-res" id="ffResult" style="display:none">
-<h3 style="font-size:1rem;color:var(--ok);margin-bottom:.5rem">✅ جاهز!</h3>
-<video id="ffResultVideo" controls playsinline style="width:100%;max-height:400px;border-radius:.5rem"></video>
-<div style="display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap">
-<button class="dl-btn" style="flex:1" onclick="downloadFFmpegResult()">⬇️ تحميل</button>
-<button class="icb" onclick="addFFmpegResultToGallery()">🖼️ للمعرض</button>
-</div>
-</div>
-</div>
-
-<div class="gallery">
-<h2>معرض النتائج 🖼️ <button class="icb" onclick="clearGallery()" style="font-size:.7rem">مسح</button></h2>
-<div class="gal-grid" id="galGrid"><div class="empty">لا نتائج.</div></div>
-</div>
-
-<div class="voices">
-<h2>مكتبة الأصوات 🎙️</h2>
-<div class="voices-grid" id="voicesGrid"></div>
 </div>
 </div>
 
 <footer>AI Epic Studio Pro &copy; <span id="year"></span></footer>
 <div id="toasts"></div>
-<div class="modal-ov" id="modalOv" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
 
 <script>
-// ============================================================
-// AI Epic Studio Pro - Script with Hugging Face Real Integration
-// ============================================================
+let isGenerating = false, abortController = null, currentResultBlob = null;
 
-let currentRatio = 'landscape', isGenerating = false, abortController = null;
-let currentResultBlob = null, currentResultType = null;
-let editorImg = null, editorRotate = 0, editorFlipH = false, editorFlipV = false;
-let scenes = [], characters = [], selectedVoice = 'cute_cartoon', selectedMusic = null;
-let timerInterval = null, startTime = 0, currentRating = 0, galleryItems = [];
-let editorHistory = [], editorHistoryStep = -1;
-let sharedAudioCtx = null, activeOscillator = null, musicOscillator = null, musicGain = null;
-let db = null;
-let ffmpeg = null, ffmpegLoaded = false, ffmpegLoading = false;
-let videoClips = [], videoAudioFile = null, videoSrtFile = null;
-let ffmpegResultBlob = null, ffmpegResultUrl = null, ffmpegCancelled = false;
-let ffmpegStartTime = 0, ffmpegTimerInterval = null;
-let supabaseClient = null;
-
-const FFMPEG_CDN = {
-  core: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js',
-  wasm: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.wasm',
-  worker: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.worker.js',
-  ffmpegJs: 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js',
-  utilJs: 'https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js'
-};
-
-function escapeHtml(s) {
-  if (!s) return '';
-  return String(s).replace(/[<>&"']/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function showToast(msg, type = 'info', dur = 3000) {
+function showToast(msg, type = 'info') {
   const c = document.getElementById('toasts');
   const t = document.createElement('div');
   t.className = 'toast ' + type;
   t.textContent = msg;
-  t.setAttribute('role', 'alert');
   c.appendChild(t);
-  setTimeout(() => {
-    t.style.animation = 'slideOut .3s ease-out forwards';
-    setTimeout(() => t.remove(), 300);
-  }, dur);
+  setTimeout(() => t.remove(), 3000);
 }
 
-function parseDurMin(str) {
-  if (!str) return 1;
-  const s = String(str).trim();
-  let tot = 0;
-  const h = s.match(/(\d+(?:\.\d+)?)\s*ساع/);
-  const m = s.match(/(\d+(?:\.\d+)?)\s*دقيق/);
-  const sc = s.match(/(\d+(?:\.\d+)?)\s*ثان/);
-  if (h) tot += parseFloat(h[1]) * 60;
-  if (m) tot += parseFloat(m[1]);
-  if (sc) tot += parseFloat(sc[1]) / 60;
-  if (tot === 0) {
-    const n = parseFloat(s);
-    if (!isNaN(n)) tot = n;
-  }
-  return Math.max(1, tot);
-}
-
-function parseDurSec(str) { return Math.round(parseDurMin(str) * 60); }
-
-function fmtTime(sec) {
-  const m = String(Math.floor(sec / 60)).padStart(2, '0');
-  const s = String(sec % 60).padStart(2, '0');
-  return m + ':' + s;
-}
-
-function triggerDownload(blob, filename) {
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-  showToast('جارٍ التحميل...', 'success');
-}
-
-function openModal(html) {
-  document.getElementById('modalBox').innerHTML = html;
-  document.getElementById('modalOv').classList.add('active');
-}
-
-function closeModal() {
-  document.getElementById('modalOv').classList.remove('active');
-}
-
-function loadScript(src) {
-  return new Promise((res, rej) => {
-    if (document.querySelector('script[src="' + src + '"]')) { res(); return; }
-    const s = document.createElement('script');
-    s.src = src;
-    s.onload = res;
-    s.onerror = () => rej(new Error('فشل ' + src));
-    document.head.appendChild(s);
-  });
-}
-
-// ---------- IndexedDB ----------
-function openDB() {
-  return new Promise((res, rej) => {
-    const r = indexedDB.open('AIEpicStudioDB', 1);
-    r.onupgradeneeded = (e) => {
-      const d = e.target.result;
-      if (!d.objectStoreNames.contains('projects')) d.createObjectStore('projects', { keyPath: 'id' });
-      if (!d.objectStoreNames.contains('results')) d.createObjectStore('results', { keyPath: 'id' });
-      if (!d.objectStoreNames.contains('audit')) d.createObjectStore('audit', { keyPath: 'id' });
-      if (!d.objectStoreNames.contains('characters')) d.createObjectStore('characters', { keyPath: 'id' });
-    };
-    r.onsuccess = (e) => { db = e.target.result; res(db); };
-    r.onerror = (e) => rej(e.target.error);
-  });
-}
-
-async function dbPut(s, d) {
-  if (!db) await openDB();
-  return new Promise((res, rej) => {
-    const t = db.transaction(s, 'readwrite');
-    const r = t.objectStore(s).put(d);
-    r.onsuccess = () => res(r.result);
-    r.onerror = () => rej(r.error);
-  });
-}
-
-async function dbGetAll(s) {
-  if (!db) await openDB();
-  return new Promise((res, rej) => {
-    const t = db.transaction(s, 'readonly');
-    const r = t.objectStore(s).getAll();
-    r.onsuccess = () => res(r.result || []);
-    r.onerror = () => rej(r.error);
-  });
-}
-
-async function dbDelete(s, id) {
-  if (!db) await openDB();
-  return new Promise((res, rej) => {
-    const t = db.transaction(s, 'readwrite');
-    const r = t.objectStore(s).delete(id);
-    r.onsuccess = () => res();
-    r.onerror = () => rej(r.error);
-  });
-}
-
-async function dbClear(s) {
-  if (!db) await openDB();
-  return new Promise((res, rej) => {
-    const t = db.transaction(s, 'readwrite');
-    const r = t.objectStore(s).clear();
-    r.onsuccess = () => res();
-    r.onerror = () => rej(r.error);
-  });
-}
-
-// ---------- Theme ----------
-function initTheme() {
-  if (localStorage.getItem('theme') === 'light') document.body.classList.add('light');
-}
-
-// ---------- Connection ----------
-function updateConn() {
-  const b = document.getElementById('connBadge');
-  if (navigator.onLine) { b.textContent = '● متصل'; b.classList.remove('offline'); }
-  else { b.textContent = '● غير متصل'; b.classList.add('offline'); }
-}
-
-async function requestNotifications() {
-  if (!('Notification' in window)) { showToast('لا يدعم الإشعارات', 'error'); return; }
-  if (Notification.permission === 'granted') { showToast('مفعّلة مسبقاً', 'info'); return; }
-  const p = await Notification.requestPermission();
-  if (p === 'granted') {
-    showToast('✅ تم', 'success');
-    new Notification('AI Epic Studio', { body: 'ستصلك إشعارات' });
-  } else showToast('لم يتم التفعيل', 'warning');
-}
-
-function notifyComplete(t, b) {
-  if ('Notification' in window && Notification.permission === 'granted') new Notification(t, { body: b });
-}
-
-// ---------- API Config (Hugging Face Real Support) ----------
-function getApiCfg() {
-  return {
-    apiKey: sessionStorage.getItem('apiKey') || ''
-  };
+function toggleTheme() {
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
 
 function saveApiSettings() {
   const k = document.getElementById('apiKey').value.trim();
-  if (k) sessionStorage.setItem('apiKey', k); else sessionStorage.removeItem('apiKey');
+  if (k) sessionStorage.setItem('hfKey', k); else sessionStorage.removeItem('hfKey');
   updateApiStatus();
-  showToast('تم حفظ المفتاح', 'success');
-}
-
-function loadApiSettings() {
-  const c = getApiCfg();
-  document.getElementById('apiKey').value = c.apiKey;
-  updateApiStatus();
+  showToast('تم حفظ المفتاح بنجاح', 'success');
 }
 
 function updateApiStatus() {
-  const c = getApiCfg();
+  const k = sessionStorage.getItem('hfKey');
   const el = document.getElementById('apiStatus');
-  if (c.apiKey) { el.textContent = '✅ متصل بـ Hugging Face (حقيقي)'; el.classList.remove('mock'); }
+  if (k) { el.textContent = '✅ متصل بـ Hugging Face (حقيقي)'; el.classList.remove('mock'); }
   else { el.textContent = '⚠️ وضع المحاكاة'; el.classList.add('mock'); }
 }
 
-async function testApiConnection() {
-  const c = getApiCfg();
-  if (!c.apiKey) { showToast('أدخل مفتاح Hugging Face أولاً', 'error'); return; }
-  showToast('جارٍ اختبار الاتصال...', 'info');
+async function startGeneration() {
+  if (isGenerating) return;
+  const prompt = document.getElementById('prompt').value.trim();
+  if (!prompt) { showToast('الرجاء كتابة وصف المشهد أولاً', 'error'); return; }
+
+  const token = sessionStorage.getItem('hfKey');
+  isGenerating = true;
+  abortController = new AbortController();
+
+  const generateBtn = document.getElementById('generateBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  generateBtn.disabled = true;
+  generateBtn.textContent = '⏳ جارٍ التوليد...';
+  stopBtn.style.display = 'block';
+
+  const loadingBox = document.getElementById('loadBox');
+  const outputLog = document.getElementById('outLog');
+  const progressFill = document.getElementById('progFill');
+  const phaseIndicator = document.getElementById('phaseInd');
+  const placeholderText = document.getElementById('placeholder');
+  const previewImage = document.getElementById('previewImage');
+  const downloadBtn = document.getElementById('dlBtn');
+
+  placeholderText.style.display = 'none';
+  previewImage.classList.remove('active');
+  previewImage.removeAttribute('src');
+  downloadBtn.style.display = 'none';
+
+  loadingBox.classList.add('active');
+  outputLog.classList.add('active');
+  outputLog.textContent = '🚀 بدء تنفيذ الطلب...\n';
+  progressFill.style.width = '40%';
+
   try {
-    const res = await fetch("https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5", {
-      method: "GET",
-      headers: { "Authorization": "Bearer " + c.apiKey }
-    });
-    if (res.status === 401) throw new Error('مفتاح غير صالح');
-    showToast('✅ الاتصال ناجح!', 'success');
+    if (token) {
+      phaseIndicator.textContent = 'الاتصال بـ Hugging Face API...';
+      outputLog.textContent += 'إرسال إلى نموذج Stable Diffusion...\n';
+      
+      const response = await fetch("https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ inputs: prompt }),
+        signal: abortController.signal
+      });
+
+      if (!response.ok) throw new Error('فشل الخادم برمز ' + response.status);
+
+      const blob = await response.blob();
+      currentResultBlob = blob;
+      progressFill.style.width = '100%';
+      phaseIndicator.textContent = '✅ اكتمل التوليد!';
+      
+      previewImage.src = URL.createObjectURL(blob);
+      previewImage.classList.add('active');
+      downloadBtn.style.display = 'block';
+      showToast('✅ تم توليد الصورة الحقيقية بنجاح!', 'success');
+    } else {
+      // وضع المحاكاة الذكي للاختبار الفوري
+      phaseIndicator.textContent = 'تشغيل وضع المحاكاة...';
+      await new Promise(r => setTimeout(r, 1500));
+      progressFill.style.width = '100%';
+      
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="100%" height="100%" fill="#6366f1"/><text x="50%" y="50%" fill="white" font-size="22" text-anchor="middle" font-family="sans-serif">${prompt}</text></svg>`;
+      currentResultBlob = new Blob([svg], { type: 'image/svg+xml' });
+      
+      previewImage.src = URL.createObjectURL(currentResultBlob);
+      previewImage.classList.add('active');
+      downloadBtn.style.display = 'block';
+      phaseIndicator.textContent = '✅ اكتملت المحاكاة!';
+      showToast('تم التوليد (وضع المحاكاة)', 'info');
+    }
   } catch (err) {
-    showToast('❌ فشل الاتصال: ' + err.message, 'error');
+    if (err.name !== 'AbortError') {
+      showToast('❌ خطأ: ' + err.message, 'error');
+      outputLog.textContent += 'خطأ: ' + err.message + '\n';
+    } else {
+      showToast('تم إيقاف العملية', 'warning');
+    }
+  } finally {
+    isGenerating = false;
+    generateBtn.disabled = false;
+    generateBtn.textContent = 'توليد وإنتاج ✨';
+    stopBtn.style.display = 'none';
+    loadingBox.classList.remove('active');
+    outputLog.classList.remove('active');
   }
 }
 
-// ---------- Cloud ----------
-function getCloudCfg() {
-  return {
-    url: localStorage.getItem('supabaseUrl') || '',
-    key: localStorage.getItem('supabaseKey') || ''
-  };
+function stopGeneration() {
+  if (abortController) abortController.abort();
+  isGenerating = false;
+  document.getElementById('generateBtn').disabled = false;
+  document.getElementById('generateBtn').textContent = 'توليد وإنتاج ✨';
+  document.getElementById('stopBtn').style.display = 'none';
+  document.getElementById('loadBox').classList.remove('active');
+  document.getElementById('placeholder').style.display = 'block';
+  showToast('تم الإيقاف', 'warning');
 }
 
-function saveCloudSettings() {
-  const u = document.getElementById('supabaseUrl').value.trim();
-  const k = document.getElementById('supabaseKey').value.trim();
-  if (u && !u.startsWith('https://')) { showToast('⚠️ يجب استخدام HTTPS', 'error'); return; }
-  localStorage.setItem('supabaseUrl', u);
-  localStorage.setItem('supabaseKey', k);
-  updateCloudStatus();
-  showToast('تم حفظ الإعدادات', 'success');
+function downloadResult() {
+  if (!currentResultBlob) return;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(currentResultBlob);
+  a.download = 'ai_image_' + Date.now() + '.png';
+  a.click();
 }
 
-function loadCloudSettings() {
-  const c = getCloudCfg();
-  document.getElementById('supabaseUrl').value = c.url;
-  document.getElementById('supabaseKey').value = c.key;
-  updateCloudStatus();
-}
-
-function updateCloudStatus() {
-  const c = getCloudCfg();
-  const el = document.getElementById('cloudStatus');
-  if (c.url && c.key) { el.textContent = '✅ جاهز'; el.classList.remove('mock'); }
-  else { el.textContent = '⚠️ غير متصل'; el.classList.add('mock'); }
-}
-
-async function ensureSupabase() {
-  const c = getCloudCfg();
-  if (!c.url || !c.key) { showToast('أدخل إعدادات Supabase', 'error'); return null; }
-  if (supabaseClient) return supabaseClient;
-  try {
-    if (typeof window.supabase === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
-    const { createClient } = window.supabase;
-    supabaseClient = createClient(c.url, c.key);
-    return supabaseClient;
-  } catch (e) {
-    showToast('فشل Supabase: ' + e.message, 'error');
-    return null;
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  if (localStorage.getItem('theme') === 'light') document.body.classList.add('light');
+  if (sessionStorage.getItem('hfKey')) {
+    document.getElementById('apiKey').value = sessionStorage.getItem('hfKey');
   }
-}
-
-async function syncToCloud() {
-  const cl = await ensureSupabase();
-  if (!cl) return;
-  try {
-    const ps = await dbGetAll('projects');
-    if (ps.length === 0) { showToast('لا توجد مشاريع للرفع', 'warning'); return; }
-    showToast('⏳ جاري الرفع...', 'info');
-    const clean = ps.map(p => ({
-      id: p.id, date: p.date, prompt: p.prompt, mode: p.mode, quality: p.quality,
-      fps: p.fps, durationText: p.durationText, durationSec: p.durationSec,
-      ratio: p.ratio, voice: p.voice, music: p.music, scenes: p.scenes,
-      characters: p.characters, rating: p.rating
-    }));
-    const { error } = await cl.from('projects').upsert(clean, { onConflict: 'id' });
-    if (error) throw error;
-    showToast('✅ تم الرفع بنجاح', 'success');
-  } catch (e) { showToast('فشل الرفع: ' + e.message, 'error'); }
-}
-
-async function syncFromCloud() {
-  const cl = await ensureSupabase();
-  if (!cl) return;
-  if (!confirm('دمج المشاريع السحابية؟')) return;
-  try {
-    const { data, error } = await cl.from('projects').select('*').order('id', { ascending: false }).limit(50);
-    if (error) throw error;
-    if (!data || data.length === 0) { showToast('لا توجد مشاريع سحابية', 'warning'); return; }
-    for (const p of data) await dbPut('projects', p);
-    await renderHistory();
-    showToast('✅ تم استرجاع ' + data.length + ' مشروع', 'success');
-  } catch (e) { showToast('فشل الاسترجاع: ' + e.message, 'error'); }
-}
-
-// ---------- Ratio ----------
-function setRatio(r) {
-  currentRatio = r;
-  const L = document.getElementById('ratioLand');
-  const P = document.getElementById('ratioPort');
-  const C = document.getElementById('mediaBox');
-  if (r === 'landscape') {
-    L.classList.add('active');
-    P.classList.remove('active');
-    C.classList.remove('ratio-port');
-    C.classList.add('ratio-land');
-  } else {
-    P.classList.add('active');
-    L.classList.remove('active');
-    C.classList.remove('ratio-land');
-    C.classList.add('ratio-port');
-  }
-}
-
-// ---------- Templates ----------
-const tpls = {
-  kids: { prompt: 'قصة كرتونية للأطفال عن أرنب صغير يبحث عن صديقه في غابة سحرية.', encyclopedia: 'pixar_3d', voice: 'cute_cartoon', duration: '5 دقائق' },
-  ad: { prompt: 'إعلان تجاري لمنتج عصير طبيعي، مشاهد سينمائية، إضاءة دافئة.', encyclopedia: 'none', voice: 'energetic', duration: '30 ثانية' },
-  edu: { prompt: 'قصة تعليمية للأطفال تشرح دورة الماء في الطبيعة.', encyclopedia: 'anime_kids', voice: 'musical_chorus', duration: '3 دقائق' },
-  social: { prompt: 'فيديو قصير لسوشيال ميديا عن نصائح الإنتاجية.', encyclopedia: 'none', voice: 'energetic', duration: '20 ثانية' }
-};
-
-function applyTpl(t) {
-  if (!t) return;
-  document.getElementById('prompt').value = t.prompt;
-  document.getElementById('cartoonEncyclopedia').value = t.encyclopedia;
-  if (t.voice) selectVoice(t.voice);
-  document.getElementById('customDuration').value = t.duration;
-}
-
-function saveUserTemplate() {
-  const n = window.prompt('اسم القالب:');
-  if (!n) return;
-  const t = {
-    prompt: document.getElementById('prompt').value,
-    encyclopedia: document.getElementById('cartoonEncyclopedia').value,
-    voice: selectedVoice,
-    duration: document.getElementById('customDuration').value,
-    ratio: currentRatio,
-    quality: document.getElementById('videoQuality').value,
-    fps: document.getElementById('fpsSelect').value
-  };
-  let l = JSON.parse(localStorage.getItem('userTpls') || '[]');
-  l.push({ name: n, ...t });
-  localStorage.setItem('userTpls', JSON.stringify(l));
-  showToast('تم حفظ القالب', 'success');
-}
-
-function openTemplatesModal() {
-  const l = JSON.parse(localStorage.getItem('userTpls') || '[]');
-  const html = '<h3>قوالبي</h3>' +
-    (l.length === 0 ? '<div class="empty">لا قوالب محفوظة.</div>' : '') +
-    l.map((t, i) =>
-      `<div class="char-item"><div><strong>${escapeHtml(t.name)}</strong><br><small style="color:var(--muted)">${escapeHtml((t.prompt || '').substring(0, 60))}</small></div><div style="display:flex;gap:.3rem"><button class="icb" onclick="applyUserTpl(${i});closeModal()">تطبيق</button><button class="icb" style="color:var(--err);border-color:var(--err)" onclick="delUserTpl(${i})">حذف</button></div></div>`
-    ).join('') +
-    '<button class="icb" style="margin-top:.75rem" onclick="closeModal()">إغلاق</button>';
-  openModal(html);
-}
-
-function applyUserTpl(i) {
-  const l = JSON.parse(localStorage.getItem('userTpls') || '[]');
-  if (l[i]) { applyTpl(l[i]); showToast('تم تطبيق القالب', 'success'); }
-}
-
-function delUserTpl(i) {
-  const l = JSON.parse(localStorage.getItem('userTpls') || '[]');
-  l.splice(i, 1);
-  localStorage.setItem('userTpls', JSON.stringify(l));
-  openTemplatesModal();
-  showToast('تم حذف القالب', 'success');
-}
-
-// ---------- Storyboard ----------
-function updateSceneStats() {
-  document.getElementById('sceneCount').textContent = scenes.length;
-  const tot = scenes.reduce((a, s) => a + (parseFloat(s.duration) || 0), 0);
-  document.getElementById('totalSceneDuration').textContent = tot + ' ثانية';
-  document.getElementById('scenesEmpty').style.display = scenes.length === 0 ? 'block' : 'none';
-}
-
-function renderScenes() {
-  const c = document.getElementById('scenesContainer');
-  c.querySelectorAll('.scene').forEach(e => e.remove());
-  scenes.forEach((s, i) => {
-    const d = document.createElement('div');
-    d.className = 'scene';
-    d.innerHTML = `<div><div class="num">المشهد ${i + 1}</div><textarea placeholder="وصف..." oninput="updScene(${i},'description',this.value)">${escapeHtml(s.description || '')}</textarea></div><input type="number" class="dur" min="1" value="${s.duration \vert{}\vert{} 5}" oninput="updScene(${i},'duration',this.value)"><button class="del" onclick="delScene(${i})">✕</button>`;
-    c.appendChild(d);
-  });
-  updateSceneStats();
-  renderTimeline();
-}
-
-function updScene(i, f, v) {
-  if (!scenes[i]) return;
-  scenes[i][f] = f === 'duration' ? (parseFloat(v) || 0) : v;
-  updateSceneStats();
-}
-
-function addScene() {
-  scenes.push({ description: '', duration: 5, characters: [] });
-  renderScenes();
-  showToast('تمت إضافة مشهد', 'success');
-}
-
-function delScene(i) { scenes.splice(i, 1); renderScenes(); }
-
-function clearScenes() {
-  if (scenes.length === 0) return;
-  if (!confirm('حذف كل المشاهد؟')) return;
-  scenes = [];
-  renderScenes();
-  showToast('تم مسح المشاهد', 'success');
-}
-
-function autoSplitScenes() {
-  const p = document.getElementById('prompt').value.trim();
-  if (!p) { showToast('اكتب وصفاً أولاً', 'error'); return; }
-  const tot = parseDurSec(document.getElementById('customDuration').value);
-  const sents = p.split(/[.!?،\n]+/).map(s => s.trim()).filter(Boolean);
-  const cnt = Math.max(2, Math.min(6, sents.length || 3));
-  const per = Math.max(2, Math.round(tot / cnt));
-  scenes = [];
-  for (let i = 0; i < cnt; i++) scenes.push({ description: sents[i] || 'مشهد ' + (i + 1), duration: per, characters: [] });
-  renderScenes();
-  showToast('تم التقسيم إلى ' + cnt + ' مشاهد', 'success');
-}
-
-function generateScript() {
-  const p = document.getElementById('prompt').value.trim();
-  if (!p) { showToast('اكتب وصفاً أولاً', 'error'); return; }
-  const tot = parseDurSec(document.getElementById('customDuration').value);
-  const sents = p.split(/[.!?،\n]+/).map(s => s.trim()).filter(Boolean);
-  const cnt = Math.max(3, Math.min(8, Math.ceil(tot / 30), sents.length || 3));
-  const per = Math.max(3, Math.round(tot / cnt));
-  const cams = ['تتبع أمامي بطيء', 'لقطة واسعة', 'تحريك عمودي', 'دوران', 'لقطة قريبة', 'تتبع جانبي'];
-  const fx = ['موسيقى هادئة', 'مؤثرات طبيعية', 'انتقال تلاشي', 'مؤثرات درامية'];
-  scenes = [];
-  for (let i = 0; i < cnt; i++) {
-    const b = sents[i % sents.length] || 'مشهد ' + (i + 1);
-    scenes.push({ description: '[' + cams[i % cams.length] + '] ' + b, duration: per, characters: [], effects: fx[i % fx.length] });
-  }
-  renderScenes();
-  showToast('✨ تم توليد ' + cnt + ' مشهد', 'success');
-}
-
-// ---------- Characters ----------
-function addCharacter() {
-  openModal(`<h3>إضافة شخصية</h3><div class="fg"><label>الاسم:</label><input type="text" id="charName"></div><div class="fg"><label>الوصف:</label><textarea id="charDesc"></textarea></div><div style="display:flex;gap:.5rem;margin-top:.75rem"><button class="icb" style="flex:1" onclick="saveCharacter()">💾 حفظ</button><button class="icb" onclick="closeModal()">إلغاء</button></div>`);
-}
-
-async function saveCharacter() {
-  const n = document.getElementById('charName').value.trim();
-  const d = document.getElementById('charDesc').value.trim();
-  if (!n || !d) { showToast('اسم ووصف مطلوبان', 'error'); return; }
-  const c = { id: Date.now(), name: n, description: d };
-  characters.push(c);
-  await dbPut('characters', c);
-  renderChars();
-  closeModal();
-  showToast('تمت إضافة الشخصية', 'success');
-}
-
-function renderChars() {
-  const l = document.getElementById('charsList');
-  if (characters.length === 0) {
-    l.innerHTML = '<div class="empty" style="font-size:.8rem">لا شخصيات.</div>';
-    return;
-  }
-  l.innerHTML = characters.map(c =>
-    `<div class="char-item"><div><strong>${escapeHtml(c.name)}</strong><br><small style="color:var(--muted)">${escapeHtml(c.description.substring(0, 80))}</small></div><button class="icb" style="color:var(--err);border-color
+  updateApiStatus();
+});
+</script>
+</body>
+</html>
